@@ -1,0 +1,30 @@
+{% extends "photologue/root.html" %}
+
+{% load photologue_tags photologueext_tags %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<div id="photo-detail">
+{% for gallery in object.public_galleries %}
+  <h1>Photo Gallery: {{ gallery.title }}</h1>
+
+  <ul class="breadcrumbs">
+    <li><a href="{% url pl-gallery-index %}">Photo Galleries</a> &#62;</li>
+    <li><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a> &#62;</li>
+    <li>{{ object.title }}</li>
+  </ul>
+
+  <h2>{{ object.title }}</h2>
+
+  <div class="detail-photo">
+  {% previous_in_gallery object gallery as previous_photo %}{% next_in_gallery object gallery as next_photo %}
+  {% if previous_photo %}<span class="prev-link"><a href="{{ previous_photo.get_absolute_url }}">&#60;&#60; Previous</a></span>{% endif %}
+  {% if next_photo %}<span class="next-link"><a href="{{ next_photo.get_absolute_url }}">Next &#62;&#62;</a></span>{% endif %}
+  <a href="{{ object.image.url }}"><img src="{{ object.get_display_url }}" alt="{{ object.title }}"/></a>
+  {% if object.caption %}<p class="caption">{{ object.caption }}</p>{% endif %}
+  </div>
+
+{% endfor %}
+</div>
+{% endblock %}
