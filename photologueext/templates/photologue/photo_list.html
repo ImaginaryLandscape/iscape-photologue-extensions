@@ -2,8 +2,7 @@
 
 {% block title %}All Photos{% endblock %}
 
-{% block content %}
-<div id="gallery-content">
+{% block gallery_content %}
 <h2>All Photos</h2>
 
 {% if object_list %}
@@ -22,5 +21,4 @@
     <p>{% if has_previous %}<a href="{% url pl-photo-list previous %}">Previous</a> | {% endif %} page {{ page }} of {{ pages }} {% if has_next %}| <a href="{% url pl-photo-list next %}">Next</a>{% endif %}</p>
 </div>
 {% endif %}
-</div>
 {% endblock %}

@@ -10,7 +10,7 @@
 <script type="text/javascript" src="{{ PHOTOLOGUEEXT_MEDIA_URL }}galleriffic-2.0/js/jquery.opacityrollover.js"></script>
 {% endblock %}
 
-{% block content %}
+{% block gallery_content %}
 <h1>Photo Gallery: {{ object.title }}</h1>
 <div id="gallery-detail">
   <ul class="breadcrumbs">
@@ -18,7 +18,7 @@
     <li>{{ object.title }}</li>
   </ul>
 
-  {% if object.description %}<h2 class="gallery-description">{{ object.description }}</h2>{% endif %}
+  {% if object.description %}<h3 class="gallery-description">{{ object.description }}</h3>{% endif %}
 
   <div id="gallery" class="content">
     <div id="controls" class="controls"></div>
