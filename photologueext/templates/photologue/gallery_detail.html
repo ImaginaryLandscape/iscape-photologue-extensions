@@ -14,7 +14,7 @@
 <h1>Photo Gallery: {{ object.title }}</h1>
 <div id="gallery-detail">
   <ul class="breadcrumbs">
-    <li><a href="{% url pl-gallery-index %}">Photo Galleries</a> &#62;</li>
+    <li><a href="{% url 'pl-gallery-index' %}">Photo Galleries</a> &#62;</li>
     <li>{{ object.title }}</li>
   </ul>
 
@@ -24,7 +24,7 @@
     <div id="controls" class="controls"></div>
     <div class="slideshow-container">
       <div id="loading" class="loader"></div>
-      <div id="slideshow" class="slideshow"></div>
+      <div id="gallery-slideshow" class="slideshow"></div>
     </div>
     <div id="caption" class="caption-container"></div>
   </div>
@@ -47,7 +47,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function($) {
             // We only want these styles applied when javascript is enabled
-            $('div.navigation').css({'width' : '280px', 'float' : 'left'});
+            $('div.navigation').css({'width' : '320px', 'float' : 'left'});
             $('div.content').css('display', 'block');
 
             // Initially set opacity on thumbs and add
@@ -63,12 +63,12 @@
             // Initialize Advanced Galleriffic Gallery
             var gallery = $('#thumbs').galleriffic({
                     delay:                     2500,
-                    numThumbs:                 15,
+                    numThumbs:                 20,
                     preloadAhead:              10,
                     enableTopPager:            true,
                     enableBottomPager:         true,
                     maxPagesToShow:            7,
-                    imageContainerSel:         '#slideshow',
+                    imageContainerSel:         '#gallery-slideshow',
                     controlsContainerSel:      '#controls',
                     captionContainerSel:       '#caption',
                     loadingContainerSel:       '#loading',
@@ -83,7 +83,7 @@
                     enableHistory:             false,
                     autoStart:                 false,
                     syncTransitions:           true,
-                    defaultTransitionDuration: 900,
+                    defaultTransitionDuration: 600,
                     onSlideChange:             function(prevIndex, nextIndex) {
                             // 'this' refers to the gallery, which is an extension of $('#thumbs')
                             this.find('ul.thumbs').children()

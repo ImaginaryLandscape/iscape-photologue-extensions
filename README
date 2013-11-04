@@ -1,5 +1,5 @@
-This is an extension for photologue with some iscape specific changes. 
+This is an extension for photologue that changes the admin view and greatly simplifies the url patterns to just a gallery list and a gallery detail. The project url conf should include photologueext.urls instead of photologue.urls. 
 
 Both photologue and photologueext should be on the python path and placed in INSTALLED_APPS.
 
-
+Also add 'photologueext.context_processors.media' to your CONTEXT_PROCESSORS.

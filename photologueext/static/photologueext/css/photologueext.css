@@ -30,6 +30,7 @@
 }
 
 #gallery-content img {
+  display: block;
 }
 
 #gallery-content p {
@@ -97,7 +98,7 @@
 }
 
 #gallery-content .breadcrumbs {
-  margin: 0;
+  margin: 0 0 1em;
   padding: 0;
 }
 #gallery-content .breadcrumbs li {
@@ -108,13 +109,16 @@
   width: 60%;
 }
 #gallery .slideshow-container {
-  height: 400px;
+  height: 600px;
 }
 #gallery .slideshow-container img {
   width: 100%;
 }
 #gallery-content #thumbs {
   width: 36%;
+}
+#gallery-content #thumbs ul.thumbs {
+  margin-left: 0;
 }
 #gallery-content #thumbs ul.thumbs li {
   width: 46%;
@@ -133,4 +137,11 @@ a.advance-link {
 a.thumb {
   border: 1px solid #ccc!important;
   padding: 2px!important;
+}
+
+@media screen and (max-width: 680px) {
+  #gallery, #thumbs {
+    float: none;
+    width: auto!important;
+  }
 }

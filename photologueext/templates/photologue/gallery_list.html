@@ -1,9 +1,9 @@
 {% extends "photologue/root.html" %}
 
-{% block title %}All Galleries{% endblock %}
 
 {% block gallery_content %}
-<h1>Photo Galleries</h1>
+
+<h1>{% block title %}Photo Galleries{% endblock %}</h1>
 
 <div id="gallery-list">
 {% if object_list %}
@@ -24,7 +24,7 @@
 {% if is_paginated %}
   <p>{{ hits }} galleries total.</p>
   <div id="page_controls">
-    <p>{% if has_previous %}<a href="{% url pl-gallery-list previous %}">Previous</a> | {% endif %} page {{ page }} of {{ pages }} {% if has_next %}| <a href="{% url pl-gallery-list next %}">Next</a>{% endif %}</p>
+    <p>{% if has_previous %}<a href="{% url 'pl-gallery-list' previous %}">Previous</a> | {% endif %} page {{ page }} of {{ pages }} {% if has_next %}| <a href="{% url 'pl-gallery-list' next %}">Next</a>{% endif %}</p>
   </div>
 {% endif %}
 
