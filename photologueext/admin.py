@@ -2,6 +2,7 @@ import zipfile
 import cStringIO
 
 from django import forms, http
+from django.conf import settings as project_settings
 from django.core.cache import cache
 from django.core import urlresolvers
 from django.core.files import base as files
@@ -12,7 +13,6 @@ from django.contrib import admin
 from django.contrib.admin.util import unquote
 from photologue import models, admin as photologueadmin
 from photologueext import settings
-
 
 class PhotoSelectMultiple(forms.CheckboxSelectMultiple):
     class Media:
@@ -263,3 +263,8 @@ admin.site.unregister(models.GalleryUpload)
 
 admin.site.register(models.Gallery, GalleryAdmin)
 admin.site.register(models.Photo, PhotoAdmin)
+
+if 'reversion' in project_settings.INSTALLED_APPS:
+    from reversion.helpers import patch_admin
+    patch_admin(models.Gallery)
+    patch_admin(models.Photo)
